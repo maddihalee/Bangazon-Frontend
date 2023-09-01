@@ -30,4 +30,16 @@ const deleteProducts = (id) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-export { getProducts, deleteProducts };
+const viewProductDetails = (id) => new Promise((resolve, reject) => {
+  fetch(`${dbUrl}/api/products/${id}`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => resolve(data))
+    .catch(reject);
+});
+
+export { getProducts, deleteProducts, viewProductDetails };
